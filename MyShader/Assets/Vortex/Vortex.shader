@@ -7,6 +7,7 @@ Shader "Custom/Vortex"
         [PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
         _Color("Tint", Color) = (1,1,1,1)
         [MaterialToggle] PixelSnap("Pixel snap", Float) = 0
+        _Radius("Radius",range(0,1)) = 1
     }
  
     SubShader
@@ -24,8 +25,7 @@ Shader "Custom/Vortex"
         Lighting Off
         ZWrite Off
         Blend One OneMinusSrcAlpha
- 
- 
+
         //-----add
         GrabPass
         {
@@ -77,8 +77,8 @@ Shader "Custom/Vortex"
                 {
                     //通过sin,cos来计算出旋转后的位置。 
                     float theta = percent * percent * _Angle * 8.0;
-                    float s = sin(theta);
-                    float c = cos(theta);
+                    float s = sin(theta*0.3);
+                    float c = cos(theta*0.3);
                     uv = float2(dot(uv, float2(c, -s)), dot(uv, float2(s, c))); 
                     //uv = float2(uv.x*c - uv.y*s, uv.x*s + uv.y*c);
                 }

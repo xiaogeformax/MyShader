@@ -12,7 +12,7 @@ public class Swirl : MonoBehaviour
         mat = this.GetComponent<Image>().material;
 
         //延迟2秒开始，每隔0.2s调用一次
-        InvokeRepeating("DoSwirl", 2f, 0.2f);
+        InvokeRepeating("DoSwirl", 2f, 0.4f);
     }
 
     void DoSwirl()
@@ -24,7 +24,7 @@ public class Swirl : MonoBehaviour
         mat.SetFloat("_Radius", radius);
 
         //rest
-        if (radius >= 0.6f)
+        if (radius >= 0.3f)
         {
             angle = 0;
             radius = 0.1f;
